@@ -1,7 +1,8 @@
 "use client"
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTheme } from '../../hooks/useTheme';
-
+import logo from "../../assets/logo.png"
+import { Link } from 'react-router';
 
 
 // Icons from lucide-react, commonly used with shadcn/ui
@@ -42,22 +43,7 @@ const XIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const MountainIcon = ({ className }: { className?: string }) => (
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-    >
-        <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
-    </svg>
-);
+
 
 const SunIcon = ({ className }: { className?: string }) => (
   <svg
@@ -108,10 +94,10 @@ const Header = () => {
 
   // Navigation links data
   const navLinks = [
-    { href: "#", label: "Features" },
-    { href: "#", label: "Pricing" },
+    { href: "/", label: "home" },
+    { href: "/dashboard", label: "Dashboard" },
     { href: "#", label: "About" },
-    { href: "#", label: "Contact" },
+    // { href: "#", label: "Contact" },
   ];
 
   const toggleTheme = () => {
@@ -121,34 +107,31 @@ const Header = () => {
   return (
     <header className="bg-white/80 dark:bg-black/80 backdrop-blur-sm sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-700">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between py-4">
           
           {/* Logo Section */}
-          <div className="shrink-0">
-            <a href="#" className="flex items-center gap-2">
-               <MountainIcon className="h-6 w-6 text-gray-900 dark:text-white" />
-              <span className="text-lg font-semibold text-gray-900 dark:text-white">Acme Inc</span>
-            </a>
+          <div className="shrink-0 w-30">
+           <img src={logo} alt="" />
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
-              <a 
+              <Link 
                 key={link.label} 
-                href={link.href} 
+                to={link.href} 
                 className="text-sm font-medium text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* CTA Button, Theme Toggle and Mobile Menu Toggle */}
           <div className="flex items-center gap-4">
-             <a href="#" className="hidden sm:inline-flex items-center justify-center rounded-md text-sm font-medium h-10 px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors duration-300">
+             <Link to="/register" className="hidden sm:inline-flex items-center justify-center rounded-md text-sm font-medium h-10 px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors duration-300">
                 Get Started
-             </a>
+             </Link>
 
             {/* Theme Toggle Button */}
             <button
