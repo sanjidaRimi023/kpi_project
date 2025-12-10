@@ -96,8 +96,7 @@ const Header = () => {
   const navLinks = [
     { href: "/", label: "home" },
     { href: "/dashboard", label: "Dashboard" },
-    { href: "#", label: "About" },
-    // { href: "#", label: "Contact" },
+    { href: "/question-builder", label: "Question builder" },
   ];
 
   const toggleTheme = () => {
